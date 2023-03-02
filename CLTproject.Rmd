@@ -157,4 +157,28 @@ print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
 
 ```
 
-The plot is looking uni modal. Again every time we re-due the code plot its going to change a bit. At this point in the plot we know that we are looking at 25 samples thus the "N=25". Interestingly in the beginning we were looking at bi modal distribution's because of the samples averaged together so there is no change in these last three plots.   
+The plot is looking uni modal. Again every time we re-due the code plot its going to change a bit. At this point in the plot we know that we are looking at 25 samples thus the "N=25". Interestingly in the beginning we were looking at bi modal distribution's because of the samples averaged together so there is no change in these last three plots.
+
+
+```{r}
+numb = 36
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k36 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k36),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k36)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 36") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
+
+```
+
+The plot is looking uni modal. Again every time we re-due the code plot its going to change a bit but it is looking again like a normal distribution. At this point in the plot we know that we are looking at 36 samples thus the "N=36". Interestingly in the beginning we were looking at bi modal distribution and now can see how they differed with the ending samples n=9, n=16, n=25, and with the sample that is above the 30 sample from the central limit theorem. In the end the 36 samples that is above 30 demonstrates how a normal distribution could look applying the central limit theorem.
