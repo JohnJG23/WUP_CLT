@@ -111,3 +111,30 @@ print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 The plot is almost uni modal but not quite, every time we re-due the code plot its going to change a bit. At this point in the plot we know that we are looking at 9 samples thus the "N=9". Interestingly in the beginning we were looking at bi modal distribution's but this is almost uni modal, as we change the code maybe a different appearance may appear.
 
+
+```{r}
+numb = 16
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k16 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k16),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k16)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 16") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
+
+```
+
+The plot is looking pretty much uni modal. Again every time we re-due the code plot its going to change a bit. At this point in the plot we know that we are looking at 16 samples thus the "N=9". Interestingly in the beginning we were looking at bi modal distribution's because of the samples averaged together.    
+
+
+
+
