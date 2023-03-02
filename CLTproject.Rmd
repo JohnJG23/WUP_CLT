@@ -109,6 +109,5 @@ print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 ```
 
-
-answer
+The plot is almost uni modal but not quite, every time we re-due the code plot its going to change a bit. At this point in the plot we know that we are looking at 9 samples thus the "N=9". Interestingly in the beginning we were looking at bi modal distribution's but this is almost uni modal, as we change the code maybe a different appearance may appear.
 
